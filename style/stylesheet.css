@@ -1,0 +1,31 @@
+#drawer {
+	background-color:white;
+	height: 100%;
+}
+.hero {
+	text-align: center;
+	font-size: 1.5em;
+	padding: 2em;
+}
+body, html {
+	margin:0;
+	height: 100%;
+    font-size: 10px;
+}
+.fretboard {
+	text-align: center;
+}
+#note {
+	width: 30%;
+	text-align: center;
+	background-color: #F97C17;
+	font-size: 2em;
+	clear: both;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	font-weight: 300;
+}
+.green {
+	background-color: green!important;
+}

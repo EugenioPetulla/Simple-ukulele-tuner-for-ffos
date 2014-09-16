@@ -1,0 +1,47 @@
+{
+  "version": "1.1",
+  "name": "Simple Ukulele Tuner",
+  "launch_path": "/index.html",
+  "description": "Tune your ukulele everywhere!",
+  "icons": {
+    "16": "/images/logo16.png",
+    "32": "/images/logo32.png",
+    "48": "/images/logo48.png",
+    "60": "/images/logo60.png",
+    "64": "/images/logo64.png",
+    "90": "/images/logo90.png",
+    "120": "/images/logo120.png",
+    "128": "/images/logo128.png"
+  },
+  "developer": {
+    "name": "Eugenio Petullà",
+    "url": "http://eugeniopetulla.com"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+    "audio-capture": {
+      "description": "To capture the sound of the strings from the microphone."
+      }
+    },
+  "locales": {
+    "en": {
+      "name": "Simple Ukulele Tuner",
+      "description": "Tune your ukulele everywhere!"
+    },
+    "en-US": {
+      "name": "Simple Ukulele Tuner",
+      "description": "Tune your ukulele everywhere!"
+    },
+    "es": {
+      "name": "Afinador Para Ukelele",
+      "description": "Tune your ukelele everywhere!"
+    },
+    "it-IT": {
+      "name": "Semplice Accordatore per Ukulele",
+      "description": "Accorda il tuo ukulele ovunque!"
+    }
+  }
+}

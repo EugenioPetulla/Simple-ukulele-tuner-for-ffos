@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<!--Copyright 2014 Eugenio Petullà, Federico Venditozzi-->
+<!--This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.-->
+<!--
+    This app is based on WebRTC protocol and also on the amazing work of Ferran Caellas (FerCa) http://fercaiscoding.com
+    He gave me the knowledge in order to do the chromatic part using the Fourier Transform.-->
+<!--For more information and contact read the README.txt file or drop me a line on http://www.eugeniopetulla.com-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+	<link href="style/headers.css" rel="stylesheet" type="text/css">
+	<link href="style/drawer.css" rel="stylesheet" type="text/css">
+	<link href="style/buttons.css" rel="stylesheet" type="text/css">
+	<link href="style/fonts.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="style/stylesheet.css" type="text/css" charset="utf-8" />
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src='js/frequenciesextractor.js'></script>
+  <script src='js/notesfrequencies.js'></script>
+  <script src='js/tuner.js'></script>
+<title>Simple Ukulele tuner</title>
+</head>
+<script>
+
+    window.AudioContext = window.AudioContext;
+
+    navigator.getMedia = ( navigator.getUserMedia ||
+            navigator.mozGetUserMedia );
+
+    var audioContext = new AudioContext();
+
+    var gotStreamCallback = function gotStreamCallbackFunction(mediaStream) {
+        var microphoneSource = audioContext.createMediaStreamSource(mediaStream);
+
+        var tuner = new Tuner(microphoneSource, audioContext.destination, audioContext);
+
+        tuner.start(function(note) {
+            $('#note').text(note);
+            if ( (note=="A4") || (note=="G4") || (note=="C4") || (note=="E4") || (note=="A3") || (note=="G3") || (note=="C3") || (note=="E3") ) {
+            $("#note").toggleClass("green", true);
+            }
+            else {
+            $("#note").toggleClass("green", false);
+            }
+        });
+
+    };
+
+    var errorCallback = function errorCallbackFunction(error) {
+        console.log(error);
+    };
+
+    navigator.getMedia({audio: true}, gotStreamCallback, errorCallback);
+
+</script>
+<section data-type="sidebar">
+  <header>
+    <h1>Tuning</h1>
+  </header>
+  <nav>
+    <h2>Standard</h2>
+    <ul>
+      <li><a href="#content">Soprano - Tenor</a></li>
+      <li><a href="stbar.html">Baritone</a></li>
+    </ul>
+    <h2>Alternate</h2>
+    <ul>
+      <li><a href="altsop.html">Soprano in D</a></li>
+      <li><a href="altteng.html">Tenor in Low G</a></li>
+      <li><a href="alttenb.html">Tenor in Baritone</a></li>
+    </ul>
+  </nav>
+</section>
+<section id="drawer" role="region">
+  <header>
+	<meta name="viewport" content="width=device-width" />
+    <a href="#content"><span class="icon icon-menu">hide sidebar</span></a>
+    <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+    <h1>Standard tune</h1>
+  </header>
+  <header>
+    <h2>Soprano/Concert/Tenor</h2>
+  </header>
+  <div role="main">
+	<div class="hero">Play the string you want to tune and match green color or tap the button to reproduce the correct sound.</div>
+  <p id="note" class="green"> </p>
+	<div class="fretboard">
+		<audio id="G4SU">
+  		<source src="sounds/G4.ogg" type="audio/ogg" />
+  		Your browser does not support the audio tag.
+		</audio>
+		<audio id="C4SU">
+  		<source src="sounds/C4.ogg" type="audio/ogg" />
+  		Your browser does not support the audio tag.
+		</audio>
+		<audio id="E4SU">
+  		<source src="sounds/E4.ogg" type="audio/ogg" />
+  		Your browser does not support the audio tag.
+		</audio>
+		<audio id="A4SU">
+  		<source src="sounds/A4.ogg" type="audio/ogg" />
+  		Your browser does not support the audio tag.
+		</audio>
+		<!-- Start Button Section -->
+  		<button type="button" onclick="document.getElementById('G4SU').play()">G4 (SOL)</button>
+		<button type="button" onclick="document.getElementById('C4SU').play()">C4 (DO)</button>
+		<button type="button" onclick="document.getElementById('E4SU').play()">E4 (MI)</button>
+		<button type="button" onclick="document.getElementById('A4SU').play()">A4 (LA)</button>
+  	</div>
+  </div>
+</section>
+</html>

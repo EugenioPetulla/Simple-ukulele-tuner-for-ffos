@@ -35,7 +35,16 @@ NotesFrequencies = {
             }
         }
 
-        return foundNoteDown;
+        
+        logRoundedNote = 12*Math.log2(roundedFrequency/440.);
+        logUpNote = 12*Math.log2(upFrequencyIndex/440.);
+        logDownNote = 12*Math.log2(downFrequencyIndex/440.);
+        
+        if ( (logUpNote - logRoundedNote) < (logRoundedNote - logDownNote) ) {
+            return foundNoteUp + " (offset: "+ Math.round((logRoundedNote - logUpNote)*100)/100 +")";
+        } else {
+            return foundNoteDown + " (offset: "+ Math.round((logRoundedNote - logDownNote)*100)/100 +")";
+        }
     },
 
     absNotesFrequencies: {

@@ -2,8 +2,6 @@
 
 A Simple ukulele chromatic and hear tuner to use directly from your favourite browser.
 
-[TOC]
-
 ## Technologies
 
 * WebRTC

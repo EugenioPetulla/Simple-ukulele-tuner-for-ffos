@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "name": "Simple Ukulele Tuner",
   "launch_path": "/index.html",
   "description": "Tune your ukulele everywhere!",
@@ -15,7 +15,7 @@
   },
   "developer": {
     "name": "Eugenio Petullà",
-    "url": "http://eugeniopetulla.com"
+    "url": "https://github.com/EugenioPetulla/Simple-ukulele-tuner-for-ffos/"
   },
   "installs_allowed_from": [
     "*"
